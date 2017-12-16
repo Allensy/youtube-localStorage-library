@@ -1,0 +1,13 @@
+.left-navigation-pane {
+  height: 100vh;
+  width: 200px;
+  background-color: #d6d6d6;
+  box-shadow: 1px 0px 8px 0px #776161;
+  text-align: center;
+  .input-item {
+    padding-top: 35px;
+    .input-label {
+      color: #cc7d7d;
+    }
+  }
+}

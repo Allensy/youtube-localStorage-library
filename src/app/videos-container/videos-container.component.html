@@ -1,0 +1,25 @@
+<div class="videos-container" [ngSwitch]="myVideos">
+  <button class="change-view-btn" (click)="changeVideosContainer()">change to {{changeToView}}</button>
+  <div class="content-container search-result-videos-container" *ngSwitchCase="false">
+    <div [@videoChanged]='videoState' class="title">search results</div>
+    <div class="videos-wrapper">
+      <div [@videoChanged]='videoState' class="video-item" *ngFor="let video of videosArr">
+        <div class="video-title">{{video.snippet.title}}</div>
+        <img class="video-thumbnail" (click)="openVideoModal(video.id.videoId)" [src]="video.snippet.thumbnails.default.url">
+        <div class="add-to-later" (click)="addToLater(video.id.videoId, video)">watch later</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-container my-videos-container" *ngSwitchCase="true">
+    <div class="title">my videos</div>
+    <div class="videos-wrapper">
+
+      <div class="video-item" *ngFor="let video of localstorageVideos">
+        <div class="video-title">{{video.snippet.title}}</div>
+        <img class="video-thumbnail" (click)="openVideoModal(video.id.videoId)" [src]="video.snippet.thumbnails.default.url">
+        <div class="add-to-later" (click)="removeFromMyVideos(video.id.videoId)">remove</div>
+      </div>
+    </div>
+  </div>
+</div>
